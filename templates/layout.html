@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='bold' fill='%23ffffff'>𝐆</text></svg>">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left-group">
+            <div class="menu-bars" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-logo">
+                <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;"> 𝔾 </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Overlay -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+
+        <h2 class="sidebar-title">Links</h2>
+        <nav class="sidebar-links">
+            <a href="https://gagan-b.vercel.app" onclick="toggleSidebar()">Home</a>
+            <a href="https://aurora-edu-hub.lovable.app" onclick="toggleSidebar()">Smart-Education</a>
+            <a href="https://agrismart2025.vercel.app" onclick="toggleSidebar()">AgriSmart</a>
+            <a href="https://ai-meam-creater.vercel.app/" onclick="toggleSidebar()">Meme-Creater</a>
+        </nav>
+
+        <h2 class="sidebar-title">Automation Tools</h2>
+        <nav class="sidebar-links">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('index') }}" onclick="toggleSidebar()"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="{{ url_for('dashboard') }}" onclick="toggleSidebar()"><i class="fa-solid fa-clock-rotate-left"></i>
+                History</a>
+
+            {% if current_user.role == 'admin' %}
+            <a href="{{ url_for('admin') }}" onclick="toggleSidebar()"><i class="fa-solid fa-user-shield"></i> Admin
+                Panel</a>
+            {% endif %}
+
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 10px 0;">
+
+            <a href="{{ url_for('email_sorter_route') }}" onclick="toggleSidebar()"><i class="fa-solid fa-envelope"></i>
+                Email Sorter</a>
+            <a href="{{ url_for('file_organizer_route') }}" onclick="toggleSidebar()"><i
+                    class="fa-solid fa-folder-tree"></i> File Organizer</a>
+            <a href="{{ url_for('image_resizer_route') }}" onclick="toggleSidebar()"><i class="fa-solid fa-image"></i>
+                Image Resizer</a>
+            <a href="{{ url_for('pdf_merger_route') }}" onclick="toggleSidebar()"><i class="fa-solid fa-file-pdf"></i>
+                PDF Merger</a>
+            <a href="{{ url_for('web_scraper_route') }}" onclick="toggleSidebar()"><i class="fa-solid fa-globe"></i> Web
+                Scraper</a>
+
+            <a href="{{ url_for('auth.logout') }}" onclick="toggleSidebar()"><i class="fa-solid fa-sign-out-alt"></i>
+                Logout</a>
+            {% else %}
+            <a href="{{ url_for('auth.login') }}" onclick="toggleSidebar()"><i class="fa-solid fa-right-to-bracket"></i>
+                Login</a>
+            <a href="{{ url_for('auth.signup') }}" onclick="toggleSidebar()"><i class="fa-solid fa-user-plus"></i> Sign
+                Up</a>
+            {% endif %}
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flashes">
+            {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

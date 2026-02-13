@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>File Organizer</h1>
+<p class="description">Sort files in a directory into folders based on their extension.</p>
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="files">Select Files to Organize</label>
+        <input type="file" id="files" name="files" multiple required>
+    </div>
+    <button type="submit">Organize Files</button>
+</form>
+{% endblock %}

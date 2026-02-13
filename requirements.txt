@@ -1,0 +1,12 @@
+Flask
+Pillow
+PyPDF2
+requests
+beautifulsoup4
+pandas
+openpyxl
+flask-login
+pymongo
+authlib
+python-dotenv
+dnspython

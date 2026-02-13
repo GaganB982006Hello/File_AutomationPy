@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Web Scraper</h1>
+<p class="description">Scrape data from a website and save it to an Excel file.</p>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="url">Target URL</label>
+        <input type="text" id="url" name="url" required placeholder="https://example.com/products">
+    </div>
+    <button type="submit">Scrape Data</button>
+</form>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<div class="admin-section">
+    <h2>Registered Users ({{ users|length }})</h2>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Joined At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>{{ user.created_at.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="admin-section">
+    <h2>Global Activity Log</h2>
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in history %}
+                <tr>
+                    <td>{{ item.user_name }} ({{ item.user_email }})</td>
+                    <td>{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td><span class="badge">{{ item.action }}</span></td>
+                    <td>{{ item.details }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

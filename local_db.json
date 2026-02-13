@@ -1,0 +1,23 @@
+{
+    "users": [
+        {
+            "email": "gaganb982006@gmail.com",
+            "name": "Gagan B",
+            "password": "scrypt:32768:8:1$St2pJr6hGlG9e3yk$d65a24af7b44a88cd1add8fd1d63bdfb3c698ea4f9c4694eb51638bfda85f8dd49b832e01712da723bf5796beb83f36d6d307ce0bdc89deda017fe2d33127442",
+            "role": "admin",
+            "created_at": "2026-02-11T13:33:25.133534",
+            "oauth_provider": null,
+            "_id": "6eb4150f-db28-4d72-9133-268d048b520c"
+        },
+        {
+            "email": "982006@gmail.com",
+            "name": "Gagan B",
+            "password": "scrypt:32768:8:1$J9OWi6M0XUhtnc40$ab20fd880271bfe69ab033c88da692efaf5f752051b42af89ce9b281df2ee4f2fef12623f6bc70c5a3a02c3dd7f28e6d2bfa13c87b2c4cc2bb346a7108e101e8",
+            "role": "user",
+            "created_at": "2026-02-11T13:34:52.239425",
+            "oauth_provider": null,
+            "_id": "4280e8db-6f27-4348-a7a1-26149c549edf"
+        }
+    ],
+    "history": []
+}

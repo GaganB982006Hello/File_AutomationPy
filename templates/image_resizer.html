@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Image Resizer</h1>
+<p class="description">Batch resize all images in a folder to a specific width.</p>
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="files">Select Images to Resize</label>
+        <input type="file" id="files" name="files" multiple accept="image/*" required>
+    </div>
+    <div class="form-group">
+        <label for="width">Target Width (px)</label>
+        <input type="number" id="width" name="width" value="800" required>
+    </div>
+    <button type="submit">Resize Images</button>
+</form>
+{% endblock %}

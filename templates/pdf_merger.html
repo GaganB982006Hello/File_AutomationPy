@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>PDF Merger</h1>
+<p class="description">Merge all PDF files in a directory into a single file.</p>
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="files">Select PDFs to Merge</label>
+        <input type="file" id="files" name="files" multiple accept=".pdf" required>
+    </div>
+    <div class="form-group">
+        <label for="output_name">Output Filename</label>
+        <input type="text" id="output_name" name="output_name" value="Merged_Document.pdf" required>
+    </div>
+    <button type="submit">Merge PDFs</button>
+</form>
+{% endblock %}

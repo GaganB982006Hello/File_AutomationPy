@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Your Activity Dashboard</h1>
+
+<div class="history-table-container">
+    {% if history %}
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Action</th>
+                <th>Details</th>
+                <th>Result File</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in history %}
+            <tr>
+                <td>{{ item.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td><span class="badge">{{ item.action }}</span></td>
+                <td>{{ item.details }}</td>
+                <td>{{ item.filename }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No activity recorded yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

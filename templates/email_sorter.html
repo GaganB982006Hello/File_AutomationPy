@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Email Sorter</h1>
+<p class="description">Organize your inbox by moving emails with specific keywords to a folder.</p>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+    </div>
+    <div class="form-group">
+        <label for="password">App Password</label>
+        <input type="password" id="password" name="password" required placeholder="Your App Password">
+    </div>
+    <div class="form-group">
+        <label for="server">IMAP Server</label>
+        <input type="text" id="server" name="server" value="imap.gmail.com" required>
+    </div>
+    <div class="form-group">
+        <label for="query">Search Query (IMAP format)</label>
+        <input type="text" id="query" name="query" value='(SUBJECT "Invoice")' required>
+    </div>
+    <div class="form-group">
+        <label for="folder">Target Folder</label>
+        <input type="text" id="folder" name="folder" value="Invoices" required>
+    </div>
+    <button type="submit">Sort Emails</button>
+</form>
+{% endblock %}
